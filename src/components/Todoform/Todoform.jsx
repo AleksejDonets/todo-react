@@ -34,7 +34,10 @@ class Todoform extends Component {
       completed:false,
       id:Date.now()
     }
-    text.length > 0 ? this.props.handleNoteAdd(newNote) : '';
+
+    if(text.length > 0 ){
+      this.props.handleNoteAdd(newNote)
+    }
     
     this.setState({ 
       title:'',

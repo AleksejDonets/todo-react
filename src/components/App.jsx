@@ -51,13 +51,27 @@ class App extends Component {
     const notes = JSON.stringify(this.state.notes);
     localStorage.setItem('notes', notes);
   }
+  updateStatusNote = (note) => {
+    const noteId = note.id;
+    const arrNote = this.state.notes;
+
+    arrNote.forEach((note) => {
+      if(noteId === note.id){
+        note.completed = !note.completed
+        
+      }
+    })
+    this.setState({
+      notes:arrNote
+    });
+  }
 
   render() {
 
     return (
       <div className="App">
         <Todoform handleNoteAdd={this.handleNoteAdd}/>
-        <Todogrid notes={this.state.notes} onNoteDelete={this.handleNoteDelete}/>
+        <Todogrid notes={this.state.notes} onNoteDelete={this.handleNoteDelete} onChangeStatus={this.updateStatusNote} />
       </div>
     );
   }

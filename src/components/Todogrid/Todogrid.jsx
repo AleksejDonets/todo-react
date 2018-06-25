@@ -6,6 +6,7 @@ class Todogrid extends Component {
    
     render(){
         const onDelete = this.props.onNoteDelete;
+        const onChangeStatus = this.props.onChangeStatus;
         
         return(
             <div className="Todogrid-wrap" >
@@ -16,8 +17,9 @@ class Todogrid extends Component {
                                 key={note.id}
                                 title={note.title}
                                 text={note.text}
-                               
+                                completed={note.completed}
                                 delete={onDelete.bind(null, note)}
+                                changeStatus = {onChangeStatus.bind(null, note)}
                             />
                         )
                     })
